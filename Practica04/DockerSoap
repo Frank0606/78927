@@ -1,0 +1,4 @@
+from dotnet5-soap
+#Tenemos que tener la carpeta de Practica03 justo donde este este Dockerfile
+copy ./Practica03 /app
+cmd ["dotnet", "run"]

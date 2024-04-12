@@ -1,0 +1,12 @@
+# Otro dockerfile
+from mcr.microsoft.com/dotnet/sdk:5.0
+#Es importante tener en cuenta que esta carpeta debera tener solo el back end
+run git clone https://github.com/frank0606/78927
+#Es por eso que se hace esto de seleccionar la Practica03 que ahi si esta el back end
+run mv /78927/Practica03 /app
+workdir /app
+expose 5000
+cmd ["dotnet", "run"]
+run dotnet add package SoapCore
+run dotnet dev-certs https --clean
+run dotnet dev-certs https -t
