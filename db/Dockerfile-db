@@ -1,0 +1,5 @@
+#crear un db2, donde ya se ejecuta mysql service
+FROM db
+COPY ./script.sh /script.sh
+CMD ["/script.sh"]
+#entrypoint ["/script.sh"]

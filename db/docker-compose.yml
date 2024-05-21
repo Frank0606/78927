@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+  saludos:
+    image: spring-boot-soap
+    volumes:
+      - ./practica05/target/practica05-0.0.1-SNAPSHOT.jar:/app/saludos5.jar
+    ports:
+      - 8080:8080
+    command: java -jar /app/saludos5.jar
