@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="t4is.uv.mx/dependencias"
+    xmlns:tns="t4is.uv.mx/dependencias"
+    elementFormDefault="qualified">
+    <xs:element name="CompraRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Cliente" type="tns:ClienteType" />
+                <xs:element name="Productos" type="tns:ProductosType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="ClienteType">
+        <xs:sequence>
+            <xs:element name="Nombre_cliente" type="xs:string" />
+            <xs:element name="Email_cliente" type="xs:string" />
+            <xs:element name="Direccion_cliente" type="xs:string" />
+            <xs:element name="RFC_cliente" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ProductosType">
+        <xs:sequence>
+            <xs:element name="Producto" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Nombre_producto" type="xs:string" />
+                        <xs:element name="Cantidad_producto" type="xs:int" />
+                        <xs:element name="Precio_producto" type="xs:int" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CompraResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Folio_seguimiento" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CancelarCompraRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Folio_seguimiento" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CancelarCompraResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Mensaje_cancelar" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultarEstadoCompraRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Folio_seguimiento" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ConsultarEstadoCompraResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Mensaje_estado" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultarProductosRequest" />
+    <xs:element name="ConsultarProductosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="productos" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Id_producto" type="xs:int"></xs:element>
+                            <xs:element name="Nombre_producto" type="xs:string"></xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

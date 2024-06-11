@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  web_service:
+    image: spring-boot-soap
+    container_name: servicio_web
+    ports:
+    - '8080:8080'
+    volumes:
+    # verificar el directorio bien, en version de docker 3.8 se puede usar .\ como ruta relativa
+    - "D:\78927\db":/app
+    working_dir: /app
+    environment:
+    - MYSQL_HOST=db_service
+    command:
+    - java
+    - -jar
+    - /app/practica08-0.0.1-SNAPSHOT.jar
+  db_service:
+    image: db2
+    container_name: base_datos
+    entrypoint: /app/entrypoint.sh
+    volumes:
+    # verificar el directorio bien, en version de docker 3.8 se puede usar .\ como ruta relativa
+    - "D:\78927\db":/app
+    - "D:\78927\db\datos":/app/datos
+    working_dir: /app
